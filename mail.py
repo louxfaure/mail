@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import smtplib
+import logging
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -13,7 +14,7 @@ __smtpport__ = os.getenv('SMTP_PORT')
 class Mail(object):
 
     def __init__(self, maillogin=__maillogin__, mailpwd=__mailpwd__,smtpserver=__smtpserver__,smtpport=__smtpport__):
-        print("test")
+        self.logger = logging.getLogger()
         if maillogin is None:
             raise Exception("Fournir un login ENT")
         if mailpwd is None:
